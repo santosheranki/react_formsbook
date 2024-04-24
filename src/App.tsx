@@ -11,7 +11,7 @@ function App() {
     email: "",
     mobile: "",
   });
-  const [selectedRecordId, setSelectedRecordId] = useState(null); // Add this line
+  const [selectedRecordId, setSelectedRecordId] = useState(null);
   useEffect(() => {
     const savedRecordsString = localStorage.getItem("records");
     if (savedRecordsString) {
@@ -23,13 +23,23 @@ function App() {
     setShowForm(true);
     setViewMode('view');
     setFormData(clickedRecord);
-    setSelectedRecordId(clickedRecord.id); // Add this line
+    setSelectedRecordId(clickedRecord.id);
+  };
+  const handleAddForm = () => {
+    setShowForm(true);
+    setViewMode('edit');
+    setFormData({
+      name: "",
+      email: "",
+      mobile: "",
+    });
+    setSelectedRecordId(null);
   };
   const handleEditForm = () => {
     setViewMode('edit');
   };
   const handleDeleteRecord = () => {
-    const updatedRecords = records.filter((record: any) => record.id !== selectedRecordId); // Use selectedRecordId here
+    const updatedRecords = records.filter((record: any) => record.id !== selectedRecordId);
     localStorage.setItem("records", JSON.stringify(updatedRecords));
     setRecords(updatedRecords);
     setShowForm(false);
@@ -38,18 +48,11 @@ function App() {
       email: "",
       mobile: "",
     });
-  };
-  const handleAddButtonClick = () => {
-    setShowForm(true);
-    setViewMode('edit');
-    setFormData({
-      name: "",
-      email: "",
-      mobile: "",
-    });
+    setSelectedRecordId(null);
   };
   const handleCloseBtn = () => {
     setShowForm(false);
+    setSelectedRecordId(null);
   };
   const handleChange = (event: any) => {
     const { name, value } = event.target;
@@ -58,11 +61,11 @@ function App() {
   const handleSubmit = (event: any) => {
     event.preventDefault();
     const newRecord = {
-      id: Date.now(),
+      id: selectedRecordId || Date.now(),
       ...formData,
     };
-    const updatedRecords: any = viewMode === 'edit'
-      ? records.map((record: any) => (record.id === selectedRecordId ? newRecord : record)) // Use selectedRecordId here
+    const updatedRecords: any = selectedRecordId
+      ? records.map((record: any) => (record.id === selectedRecordId ? newRecord : record))
       : [...records, newRecord];
     localStorage.setItem("records", JSON.stringify(updatedRecords));
     setRecords(updatedRecords);
@@ -72,6 +75,7 @@ function App() {
       email: "",
       mobile: "",
     });
+    setSelectedRecordId(null);
   };
   return (
     <div className="App">
@@ -79,8 +83,7 @@ function App() {
         <div className="header_one">Address Book</div>
         <div className="header_two">
           <div className="tabs">
-            <div className="tab_one">HOME</div>
-            <div className="tab_one" id="addbutton" onClick={handleAddButtonClick}>
+            <div className="tab_one" id="addbutton" onClick={handleAddForm}>
               +ADD
             </div>
           </div>
@@ -105,7 +108,7 @@ function App() {
           {showForm && (
             <div id="add_address_form" className="form_div">
               <div className="form_title">
-                {viewMode === 'edit' ? 'Edit Contacts' : 'View Contact'}
+                {viewMode === 'edit' ? 'Add Contact' : 'View Contact'}
               </div>
               <div className="form_input">
                 <div className="input_lbl">Name</div>
@@ -155,7 +158,7 @@ function App() {
                   Close
                 </button>
                 <button type="submit" className="button_two">
-                  {viewMode === 'edit' ? 'Update' : 'Adds'}
+                  {viewMode === 'edit' ? 'Save' : 'Update'}
                 </button>
               </div>
             </div>
@@ -165,4 +168,5 @@ function App() {
     </div>
   );
 }
+
 export default App;
