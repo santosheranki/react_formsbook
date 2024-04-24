@@ -1,0 +1,193 @@
+.App {}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  /* background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white; */
+}
+
+.header_one {
+  padding: 36px 16px;
+  background: #3399cc;
+  line-height: 1;
+  font-size: 32px;
+  color: #fff;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.header_two {
+  display: flex;
+  justify-content: space-between;
+  background: #000;
+  color: #fff;
+  line-height: 1;
+  padding: 5px 10px;
+  align-items: center;
+
+  .tabs {
+    display: flex;
+
+    .tab_one {
+      padding: 10px 16px;
+      cursor: pointer;
+    }
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.main_div {
+  width: 100%;
+  display: flex;
+  padding-top: 10vh;
+
+  .contact_div {
+    border: 2px solid #e2e2e2;
+    border-radius: 5px;
+    width: 30%;
+    height: 50vh;
+    margin: 3vh;
+
+    .record {
+      padding: 10px;
+      border-bottom: 2px solid #e2e2e2;
+
+      .name {
+        font-size: 24px;
+        padding: 5px 0px;
+        line-height: 1;
+      }
+
+      .email {
+        font-size: 18px;
+        padding: 2px 0px;
+        line-height: 1;
+      }
+
+      .phone {
+        font-size: 14px;
+        padding: 2px 0px;
+        line-height: 1;
+      }
+    }
+  }
+
+  .form_div {
+    width: 80vh;
+    margin: 1vh;
+    height: 60vh;
+    border: 2px solid #e2e2e2;
+    border-radius: 5px;
+
+    .form_input {
+      padding: 10px;
+    }
+
+    .input_lbl {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1;
+      padding-bottom: 5px;
+    }
+
+    .input_box {
+      width: 80%;
+      height: 3vh;
+    }
+
+    .text_area {
+      width: 80%;
+      height: 8vh;
+    }
+
+    .mobile_div {
+      display: flex;
+      width: 80%;
+
+      .mobile_inpt_div {
+        padding: 10px;
+        width: 50%;
+      }
+
+      .mobile_input {
+        width: 100%;
+        height: 3vh;
+      }
+    }
+
+    .button_class {
+      display: flex;
+      justify-content: end;
+
+      .button_one {
+        padding: 8px 0px;
+        width: 12vh;
+        margin: 10px;
+        color: #fff;
+        border: none;
+        background: #ff0606;
+        border-radius: 5px;
+      }
+
+      .button_two {
+        padding: 8px 0px;
+        width: 12vh;
+        margin: 10px;
+        color: #fff;
+        border: none;
+        background: #00a900;
+        border-radius: 5px;
+      }
+    }
+  }
+}
+
+.edit_form_div {
+  width: 50% !important;
+}
+
+.edit_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+
+  .name {
+    font-size: 32px;
+    width: 70%;
+    font-weight: 600;
+  }
+
+  .edit_btn {
+    display: flex;
+    justify-content: space-around;
+    width: 30%;
+  }
+}
